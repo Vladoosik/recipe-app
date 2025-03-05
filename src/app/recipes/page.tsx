@@ -1,5 +1,8 @@
 import Link from "next/link";
 import {Suspense} from "react";
+import {fetchData} from "@/api/fetchData";
+import ErrorState from "@/components/errorState";
+import Loader from "@/components/loader";
 
 const Recipes = async ({ searchParams }: { searchParams: { query?: string; cuisine?: string; duration?: string } }) => {
   const query = searchParams.query || "";
@@ -8,11 +11,15 @@ const Recipes = async ({ searchParams }: { searchParams: { query?: string; cuisi
 
   const apiKey = process.env.API_KEY;
   const apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${query}&cuisine=${cuisine}&maxReadyTime=${duration}&apiKey=${apiKey}`;
-  const res = await fetch(apiUrl, { next: { revalidate: 60 } });
-  const data = await res.json();
+  const data = await fetchData(apiUrl);
+
+  if (!data) {
+    return <ErrorState />;
+  }
 
   return (
-    <div className="w-full flex justify-center p-10">
+      <div className="h-screen bg-gradient-to-b from-gray-900 to-black">
+    <div className="w-full flex justify-center p-10 ">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {data?.results?.length > 0 ? (
           data.results.map((item: any) => (
@@ -61,12 +68,13 @@ const Recipes = async ({ searchParams }: { searchParams: { query?: string; cuisi
         )}
       </div>
     </div>
+      </div>
   );
 }
 
 const SuspenseWrapper = (props: any) => {
   return (
-      <Suspense fallback={<div className="text-center text-xl">Loading recipes...</div>}>
+      <Suspense fallback={<Loader/>}>
         <Recipes {...props} />
       </Suspense>
   );
