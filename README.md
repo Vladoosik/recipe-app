@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+## Step 1: Clone the project
+first of all you need clone this project using git.
+Go to console and choose the  desired folder where you want to deploy the project. 
+Write on console the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Vladoosik/recipe-app.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Wait until cloning is completed, then proceed to the next step
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Step 2: Install the required modules
+In order for the project to run, you need to install the necessary modules; this
+can be done by writing the following command in the terminal:
 
-## Learn More
+```bash
+npm install
+```
+The project uses only the **npm** package manager, you will need to install it first
 
-To learn more about Next.js, take a look at the following resources:
+## Step 3: Start the Local Server
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Third, you will need to start **Local Server**,
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To start server, run the following command from the _root_ of this Next JS project:
 
-## Deploy on Vercel
+```bash
+npm run dev 
+```
+After the local server is started, go to **localhost:3000** in any browser
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## You are awesome
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+If you did everything correctly, the functionality of the site will be available to you 
+
+It has 3 screens 
+
+### 1. Home page
+
+On this page you can enter all the necessary information, the name of the dish, the country in which this dish is available and the maximum amount of time for its preparation
+
+### 2. List of dishes
+
+The found dishes that you entered in the previous screen will be shown here. When you click on one of the dishes you will be redirected to the next page
+
+### 3. Ricepts
+
+This screen will display the recipe for the dish selected from the previous screen. Ingredients, number of servings and preparation method will be shown.
